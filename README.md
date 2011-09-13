@@ -71,7 +71,7 @@ All functions of the masked object are bound to the original object with _.bind.
     talkingDog.bark(); // Shows "I am Lassie!"
     // talkingDog.name is not defined
 
-** Modifying references in masked objects does not modify the original object! **
+**Modifying references in masked objects does not modify the original object!**
 
     talkingDog.bark = function () { alert("barkbark!"); };
     lassie.bark(); // Still says "I am Lassie!"
