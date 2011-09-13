@@ -52,7 +52,7 @@ Using jsFacer.define lets you save the interface with the name you specify in th
 
 ### Masking object with an interface
 
-You can create a masked object based on an interface. This essentially exposes only fields that are defined in the interface.
+You can create a masked object based on an interface. This essentially exposes only the fields that are defined in the interface.
 
     jsFacer.define("iBarker", {
         bark: "function"
