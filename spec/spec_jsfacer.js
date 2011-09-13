@@ -139,6 +139,16 @@ describe("jsFacer", function () {
             expect(jsFacer.isDefined("myInterface")).toBeFalsy();
         });
 
+        it("Should throw an error when trying to use an interface not defined", function () {
+            var errorThrown = false;
+            try {
+                jsFacer.findInterface("myInterface");
+            } catch (e) {
+                errorThrown = true;
+            }
+            expect(errorThrown).toBeTruthy();
+        });
+
         describe("Testing myInterface", function () {
             beforeEach(function () {
                 _jsFacer.define("myInterface", completeInterface);

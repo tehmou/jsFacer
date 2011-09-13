@@ -31,15 +31,18 @@ var jsFacer = {
             },
 
             findInterface: function (interface) {
-                return _.isString(interface) ? this.interfaces[interface] : interface;
+                var realInterface = _.isString(interface) ? this.interfaces[interface] : interface;
+                if (!realInterface) {
+                    throw "Could not find interface \"" + interface + "\"!";
+                }
+                return realInterface;
             },
 
             check: function (object, interface) {
-                var realInterface = this.findInterface(interface);
                 var passed = true;
                 var types = this.types;
 
-                _.each(realInterface, function (value, index) {
+                _.each(this.findInterface(interface), function (value, index) {
                     passed = passed && object.hasOwnProperty(index) && types[value](object[index]);
                 });
                 return passed;
@@ -56,9 +59,8 @@ var jsFacer = {
                 if (options.assert) {
                     this.assert.apply(this, arguments);
                 }
-                var realInterface = this.findInterface(interface);
                 var masked = {};
-                _.each(realInterface, function (value, index) {
+                _.each(this.findInterface(interface), function (value, index) {
                     masked[index] = object[index];
                     if (options.bind && _.isFunction(masked[index])) {
                         masked[index] = _.bind(masked[index], object);
