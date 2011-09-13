@@ -1,4 +1,4 @@
-//     jsFacer.js 0.1.0
+//     jsFacer.js 0.1.1
 //     (c) 2011 Timo Tuominen
 //     Backbone may be freely distributed under the MIT license.
 //     For all details and documentation:
@@ -18,8 +18,9 @@ var jsFacer = {
                 "any": function () { return true; }
             },
 
-            define: function (name, interface, override) {
-                if (!override && this.isDefined(name)) {
+            define: function (name, interface, options) {
+                options = options || {};
+                if (!options.override && this.isDefined(name)) {
                     throw "Interface \"" + name + "\" was already defined!";
                 }
                 this.interfaces[name] = interface;
@@ -29,8 +30,12 @@ var jsFacer = {
                 return this.interfaces.hasOwnProperty(name);
             },
 
+            findInterface: function (interface) {
+                return _.isString(interface) ? this.interfaces[interface] : interface;
+            },
+
             check: function (object, interface) {
-                var realInterface = _.isString(interface) ? this.interfaces[interface] : interface;
+                var realInterface = this.findInterface(interface);
                 var passed = true;
                 var types = this.types;
 
@@ -44,6 +49,22 @@ var jsFacer = {
                 if (!this.check.apply(this, arguments)) {
                     throw "Object failed to implement interface \"" + interface + "\"!";
                 }
+            },
+
+            mask: function (object, interface, options) {
+                options = options || { assert: true, bind: true };
+                if (options.assert) {
+                    this.assert.apply(this, arguments);
+                }
+                var realInterface = this.findInterface(interface);
+                var masked = {};
+                _.each(realInterface, function (value, index) {
+                    masked[index] = object[index];
+                    if (options.bind && _.isFunction(masked[index])) {
+                        masked[index] = _.bind(masked[index], object);
+                    }
+                });
+                return masked;
             }
         });
         return base;

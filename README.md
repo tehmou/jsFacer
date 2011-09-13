@@ -1,7 +1,7 @@
-jsFacer 0.1.0
+jsFacer 0.1.1
 =============
 
-A lightweight utility for checking if an object fulfills a defined interface. Depends on [underscore.js](http://documentcloud.github.com/underscore/), and [Jasmine](http://pivotal.github.com/jasmine/) for tests.
+A lightweight utility for interface-like behavior. Depends on [underscore.js](http://documentcloud.github.com/underscore/), and [Jasmine](http://pivotal.github.com/jasmine/) for tests.
 
 
 Usage
@@ -48,6 +48,28 @@ Using jsFacer.define lets you save the interface with the name you specify in th
 
     var amIDog = jsFacer.check(dog, "iDog"); // true
     var amIDogToo = jsFacer.check(duck, "iDog"); // false
+
+
+### Masking object with an interface
+
+You can create a masked object based on an interface. This essentially exposes only fields that are defined in the interface.
+
+    jsFacer.define("iBarker", {
+        bark: "function"
+    });
+
+    var barker = jsFacer.mask(dog, "iBarker");
+
+All functions of the masked object are bound to the original object with _.bind. Use { bind: false } as the third argument to disable this.
+
+    var lassie = {
+        bark: function () { alert("I am " + this.name + "!"; },
+        name: "Lassie"
+    };
+
+    var talkingDog = jsFacer.mask(lassie, "iBarker");
+    talkingDog.bark(); // Shows "I am Lassie!"
+    // talkingDog.name is not defined
 
 
 ### How property matching works
