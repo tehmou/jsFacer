@@ -4,10 +4,7 @@ jsFacer
 A lightweight utility for checking if an object fulfills a defined interface. The only dependency is underscore.js, and Jasmine for tests.
 
 
-Interface objects
----------------------
-
-Define a property-type hash to use as the definition. The supported types are function, array, string, boolean, number and any. See below for defining your own types or removing the existing ones.
+### Defining an interface
 
     var iDuck = {
         quack: "function",
@@ -15,9 +12,10 @@ Define a property-type hash to use as the definition. The supported types are fu
         canFly: "boolean"
     };
 
+This will match an object that has properties quack, color and canFly, of corresponding types function, string and boolean.
 
-Checking against an interface object
------------------------------
+
+### Checking against an interface
 
     var duck = {
         quack: function () { alert("quack!"); },
@@ -28,10 +26,9 @@ Checking against an interface object
     var amIDuck = jsFacer.check(duck, iDuck); // true
 
 
-Defining and using named interfaces
------------------
+### Defining and using named interfaces
 
-Using jsFacer.define lets you save the interface with the name you specify in the first argument. You can then use this name elsewhere instead of the actual interface object.
+Using jsFacer.define lets you save the interface with the name you specify in the first argument. You can then use this name elsewhere as a string, instead of the actual interface object.
 
     jsFacer.define("iDog", {
         bark: "function",
@@ -49,10 +46,20 @@ Using jsFacer.define lets you save the interface with the name you specify in th
     var amIDogToo = jsFacer.check(duck, "iDog"); // false
 
 
-Defining and modifying property types
-------------------
+### How property matching works
 
-You can also define your own types with checking functions that return either true of false. The function gets the value of the property as its first argument.
+For checking which is which, underscore.js utilities are used:
+
+    types: {
+        "function": _.isFunction,
+        "array": _.isArray,
+        "string": _.isString,
+        "boolean": _.isBoolean,
+        "number": _.isNumber,
+        "any": function () { return true; }
+    }
+
+You can modify these or define your owns in jsFacer.types. The match function is given the value to match in the first argument, and it is expected to return either true or false.
 
     jsFacer.types["isMurre"] = function (value) {
         return value === "Murre";
@@ -74,16 +81,14 @@ You can also define your own types with checking functions that return either tr
     jsFacer.check(randomDog, "iMurreMatcher"); // false
 
 
-Asserts
--------
+### Asserts
 
 If you want an error to be thrown when the interface does not match, use jsFacer.assert.
 
     jsFacer.assert(duck, "iDog"); // Throw an error
 
 
-Creating instances of jsFacer
------------------------------
+### Creating new instances of jsFacer
 
 Sometimes you may want to create a new instance of jsFacer--for instance, if you want to be sure no one mess with your interface definitions.
 
