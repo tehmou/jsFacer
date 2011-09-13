@@ -2,7 +2,7 @@ describe("jsFacer", function () {
     var completeInterface, originalValidTestObject, _jsFacer;
 
     beforeEach(function () {
-        jsFacer.create(_jsFacer = {});
+        _jsFacer = jsFacer.create();
         completeInterface = {
             myFunction: "function",
             myArray: "array",
@@ -102,27 +102,35 @@ describe("jsFacer", function () {
     });
     
     describe("Saving interfaces with name", function () {
-        
-        beforeEach(function () {
-            _jsFacer.define("myInterface", completeInterface);
+
+        it("Should not yet have myInterface defined", function () {
+            expect(jsFacer.isDefined("myInterface")).toBeFalsy();
         });
-        
-        it("Should read the saved interface", function () {
-            _jsFacer.check(originalValidTestObject, "myInterface");
-        });
-        
-        it("Should not allow overriding an interface already defined", function () {
-            var errorThrown = false;
-            try {
-                _jsFacer.define("myInterface", {});
-            } catch (e) {
-                errorThrown = true;
-            }
-            expect(errorThrown).toBeTruthy();
-        });
-        
-        it("Should allow overriding an interface if forced", function () {
-            _jsFacer.define("myInterface", {}, true);
+
+        describe("Testing myInterface", function () {
+            beforeEach(function () {
+                _jsFacer.define("myInterface", completeInterface);
+            });
+
+            it("Should read the saved interface", function () {
+                expect(_jsFacer.isDefined("myInterface")).toBeTruthy();
+                _jsFacer.check(originalValidTestObject, "myInterface");
+            });
+
+            it("Should not allow overriding an interface already defined", function () {
+                var errorThrown = false;
+                try {
+                    _jsFacer.define("myInterface", {});
+                } catch (e) {
+                    errorThrown = true;
+                }
+                expect(errorThrown).toBeTruthy();
+            });
+
+            it("Should allow overriding an interface if forced", function () {
+                _jsFacer.define("myInterface", {}, true);
+            });
         });
     });
+
 });

@@ -1,6 +1,7 @@
 var jsFacer = {
     create: function (base) {
-        _.extend(base || this, {
+        base = base || {};
+        _.extend(base, {
             interfaces: {},
             types: {
                 "function": _.isFunction,
@@ -12,10 +13,14 @@ var jsFacer = {
             },
 
             define: function (name, interface, override) {
-                if (!override && this.interfaces.hasOwnProperty(name)) {
+                if (!override && this.isDefined(name)) {
                     throw "Interface \"" + name + "\" was already defined!";
                 }
                 this.interfaces[name] = interface;
+            },
+
+            isDefined: function (name) {
+                return this.interfaces.hasOwnProperty(name);
             },
 
             check: function (object, interface, acceptNull) {
@@ -35,7 +40,8 @@ var jsFacer = {
                 }
             }
         });
+        return base;
     }
 };
 
-jsFacer.create();
+jsFacer.create(jsFacer);
