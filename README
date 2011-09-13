@@ -1,0 +1,22 @@
+jsFacer
+=======
+
+A lightweight utility for checking if an object fulfills a defined interface.
+
+Defining an Interface
+---------------------
+
+    var iDuck = {
+        quack: "function",
+        color: "string",
+        canFly: "boolean"
+    };
+
+
+Checking Against an Interface
+-----------------------------
+
+    var duck = {
+
+    };
+    var amIDuck = jsFacer.check();
