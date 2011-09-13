@@ -23,18 +23,18 @@ var jsFacer = {
                 return this.interfaces.hasOwnProperty(name);
             },
 
-            check: function (object, interface, acceptNull) {
+            check: function (object, interface) {
                 var realInterface = _.isString(interface) ? this.interfaces[interface] : interface;
                 var passed = true;
                 var types = this.types;
 
                 _.each(realInterface, function (value, index) {
-                    passed = passed && object.hasOwnProperty(index) && ((acceptNull && object[index] === null) || types[value](object[index]));
+                    passed = passed && object.hasOwnProperty(index) && types[value](object[index]);
                 });
                 return passed;
             },
 
-            assert: function (object, interface, acceptNull) {
+            assert: function (object, interface) {
                 if (!this.check.apply(this, arguments)) {
                     throw "Object failed to implement interface \"" + interface + "\"!";
                 }

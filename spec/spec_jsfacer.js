@@ -35,15 +35,6 @@ describe("jsFacer", function () {
                 _jsFacer.assert(validTestObject, completeInterface);
             });
         });
-
-        it("Should allow null when so specified", function () {
-            var validTestObject;
-            _.each(originalValidTestObject, function (value, index) {
-                validTestObject = _.clone(originalValidTestObject);
-                validTestObject[index] = null;
-                _jsFacer.assert(validTestObject, completeInterface, true);
-            });
-        });        
     });
 
     describe("Throwing errors", function () {
