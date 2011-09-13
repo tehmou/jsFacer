@@ -133,7 +133,7 @@ Sometimes you may want to create a new instance of jsFacer--for instance, if you
 Installation
 ------------
 
-Download [underscore.js](http://documentcloud.github.com/underscore/) and [jsfacer.js](https://github.com/downloads/tehmou/jsFacer/jsfacer-0.1.1.js), and include them in your project.
+Download [underscore.js](http://documentcloud.github.com/underscore/) and [jsfacer.js](https://github.com/downloads/tehmou/jsFacer/jsfacer-0.1.2.js), and include them in your project.
 
     <script type="text/javascript" src="underscore.js"></script>
     <script type="text/javascript" src="jsfacer.js"></script>
