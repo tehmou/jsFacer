@@ -1,7 +1,11 @@
-jsFacer
-=======
+jsFacer 0.1.0
+=============
 
-> A lightweight utility for checking if an object fulfills a defined interface. Depends on [underscore.js](http://documentcloud.github.com/underscore/), and [Jasmine](http://pivotal.github.com/jasmine/) for tests.
+A lightweight utility for checking if an object fulfills a defined interface. Depends on [underscore.js](http://documentcloud.github.com/underscore/), and [Jasmine](http://pivotal.github.com/jasmine/) for tests.
+
+
+Usage
+-----
 
 
 ### Defining an interface
@@ -104,3 +108,10 @@ Sometimes you may want to create a new instance of jsFacer--for instance, if you
     jsFacer.isDefined("iSecretInterface"); // false
 
 
+Installation
+------------
+
+Download [underscore.js](http://documentcloud.github.com/underscore/) and jsfacer.js, and include them in your project.
+
+    <script type="text/javascript" src="underscore.js"></script>
+    <script type="text/javascript" src="jsfacer.js"></script>
