@@ -1,7 +1,7 @@
 jsFacer 0.1.1
 =============
 
-A lightweight utility for interface-like behavior. Depends on [underscore.js](http://documentcloud.github.com/underscore/), and [Jasmine](http://pivotal.github.com/jasmine/) for tests.
+A lightweight utility for interface-like behavior in JavaScript. Depends on [underscore.js](http://documentcloud.github.com/underscore/), and [Jasmine](http://pivotal.github.com/jasmine/) for tests.
 
 
 Usage
@@ -133,7 +133,7 @@ Sometimes you may want to create a new instance of jsFacer--for instance, if you
 Installation
 ------------
 
-Download [underscore.js](http://documentcloud.github.com/underscore/) and jsfacer.js, and include them in your project.
+Download [underscore.js](http://documentcloud.github.com/underscore/) and [jsfacer.js](https://github.com/downloads/tehmou/jsFacer/jsfacer-0.1.1.js), and include them in your project.
 
     <script type="text/javascript" src="underscore.js"></script>
     <script type="text/javascript" src="jsfacer.js"></script>
