@@ -1,6 +1,6 @@
-//     jsFacer.js 0.1.1
+//     jsFacer 0.1.1
 //     (c) 2011 Timo Tuominen
-//     Backbone may be freely distributed under the MIT license.
+//     jsFacer may be freely distributed under the MIT license.
 //     For all details and documentation:
 //     https://github.com/tehmou/jsFacer
 
