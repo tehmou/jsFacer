@@ -1,4 +1,4 @@
-//     jsFacer 0.1.1
+//     jsFacer 0.1.2
 //     (c) 2011 Timo Tuominen
 //     jsFacer may be freely distributed under the MIT license.
 //     For all details and documentation:

@@ -1,4 +1,4 @@
-jsFacer 0.1.1
+jsFacer 0.1.2
 =============
 
 A lightweight utility for interface-like behavior in JavaScript. Depends on [underscore.js](http://documentcloud.github.com/underscore/), and [Jasmine](http://pivotal.github.com/jasmine/) for tests.
