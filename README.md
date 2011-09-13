@@ -1,7 +1,7 @@
 jsFacer
 =======
 
-A lightweight utility for checking if an object fulfills a defined interface. The only dependency is underscore.js, and Jasmine for tests.
+> A lightweight utility for checking if an object fulfills a defined interface. Depends on [underscore.js](http://documentcloud.github.com/underscore/), and [Jasmine](http://pivotal.github.com/jasmine/) for tests.
 
 
 ### Defining an interface
@@ -12,7 +12,7 @@ A lightweight utility for checking if an object fulfills a defined interface. Th
         canFly: "boolean"
     };
 
-This will match an object that has properties quack, color and canFly, of corresponding types function, string and boolean.
+This will match any object that has properties quack, color and canFly, of corresponding types function, string and boolean.
 
 
 ### Checking against an interface
